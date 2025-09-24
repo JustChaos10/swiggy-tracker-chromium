@@ -1,0 +1,662 @@
+/* Swiggy Order Tracker Styles - Final Fixes */
+:root {
+  --c-accent: #ff6b35;
+  --c-accent-2: #f7931e;
+  --c-text: #222;
+  --c-sub: #666;
+  --c-bg: #fff;
+  --c-muted: #f4f5f6;
+  --radius: 12px;
+  --sp: 8px;
+  --c-status-active: #22c55e; /* Green */
+  --c-status-inactive: #ef4444; /* Red */
+}
+
+*[id^=swg-] {
+  box-sizing: border-box
+}
+
+#swg-btn {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 10000 !important;
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50% !important;
+  border: 0 !important;
+  cursor: pointer !important;
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent-2)) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 22px rgba(255, 107, 53, .45) !important;
+  transition: transform .15s ease, box-shadow .15s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+#swg-btn img {
+  width: 32px !important;
+  height: 32px !important;
+  object-fit: contain !important;
+  filter: brightness(0) invert(1) !important; /* Make icon white */
+  transition: filter 0.2s ease !important;
+}
+
+#swg-btn:hover img {
+  filter: brightness(0) invert(1) drop-shadow(0 0 2px rgba(255, 255, 255, 0.3)) !important;
+}
+
+#swg-btn:hover {
+  transform: scale(1.07) !important;
+  box-shadow: 0 10px 28px rgba(255, 107, 53, .55) !important
+}
+
+#swg-drawer {
+  position: fixed !important;
+  top: 20px !important;
+  right: 92px !important;
+  z-index: 10001 !important;
+  display: none;
+  width: 380px !important;
+  min-width: 320px !important;
+  max-width: 560px !important;
+  resize: horizontal !important;
+  max-height: 90vh !important;
+  overflow: auto !important;
+  background: var(--c-bg) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 18px 54px rgba(0, 0, 0, .25) !important;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif !important;
+}
+
+.swg-hdr {
+  padding: 12px 16px !important;
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent-2)) !important;
+  color: #fff !important;
+  display: flex !important;
+  align-items: center !important; /* Vertically center items */
+  justify-content: space-between !important;
+  border-radius: var(--radius) var(--radius) 0 0 !important;
+}
+
+.swg-title {
+  margin: 0 !important;
+  font-weight: 800 !important;
+  font-size: 16px !important;
+  letter-spacing: .2px !important
+}
+
+.swg-status {
+  font-size: 12px !important;
+  opacity: .95 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important
+}
+
+/* NEW: Status indicator styles */
+.swg-status-indicator {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: var(--c-status-inactive) !important; /* Default to red */
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, .9) !important;
+}
+
+.swg-status-indicator.active {
+  background-color: var(--c-status-active) !important; /* Green when active */
+  animation: swgPulse 2s infinite !important;
+}
+
+@keyframes swgPulse {
+  0% {
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, .7)
+  }
+  70% {
+      box-shadow: 0 0 0 8px rgba(34, 197, 94, 0)
+  }
+  100% {
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0)
+  }
+}
+
+.swg-close {
+  background: rgba(255, 255, 255, .25) !important;
+  color: #fff !important;
+  border: 0 !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  font-size: 18px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.swg-close:hover {
+  background: rgba(255, 255, 255, .35) !important
+}
+
+.swg-section {
+  padding: 16px !important
+}
+
+.swg-section+.swg-section {
+  border-top: 1px solid #eee !important
+}
+
+.swg-stats {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 8px !important
+}
+
+.swg-card {
+  background: #fff !important;
+  border-radius: 10px !important;
+  padding: 12px !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, .06) !important
+}
+
+.swg-kpi {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important
+}
+
+.swg-kpi .num {
+  font-weight: 800 !important;
+  color: var(--c-accent) !important;
+  font-size: 20px !important
+}
+
+.swg-kpi .lbl {
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: .5px !important;
+  color: #666 !important
+}
+
+.swg-trio {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  gap: 8px !important
+}
+
+.swg-chip {
+  background: #fff !important;
+  border-radius: 10px !important;
+  padding: 10px 8px !important;
+  text-align: center !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, .05) !important
+}
+
+.swg-chip .num {
+  font-weight: 800 !important;
+  font-size: 16px !important;
+  color: var(--c-accent) !important
+}
+
+.swg-chip .lbl {
+  font-size: 11px !important;
+  color: #666 !important
+}
+
+.swg-actions {
+  display: flex !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important
+}
+
+.swg-btn {
+  flex: 1 !important;
+  min-width: 120px !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  padding: 10px 12px !important;
+  cursor: pointer !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: .4px !important
+}
+
+.swg-btn.primary {
+  background: var(--c-accent) !important;
+  color: #fff !important
+}
+
+.swg-btn.primary:hover {
+  background: #e65c2f !important
+}
+
+.swg-btn.alt {
+  background: var(--c-muted) !important;
+  color: #222 !important;
+  border: 1px solid #e5e7eb !important
+}
+
+.swg-btn.alt:hover {
+  background: #eceff1 !important
+}
+
+.swg-orders h3 {
+  margin: 0 0 8px 0 !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  color: #333 !important
+}
+
+.swg-list {
+  max-height: 300px !important;
+  overflow: auto !important
+}
+
+.swg-item {
+  border-left: 4px solid var(--c-accent) !important;
+  background: linear-gradient(135deg, #fafbfc, #fff) !important;
+  border-radius: 10px !important;
+  padding: 10px !important;
+  margin-bottom: 8px !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, .05) !important
+}
+
+.swg-item .top {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 8px !important
+}
+
+.swg-item .name {
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  color: #333 !important;
+  line-height: 1.3 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 220px !important
+}
+
+.swg-item .total {
+  font-weight: 800 !important;
+  color: var(--c-accent) !important;
+  white-space: nowrap !important
+}
+
+.swg-item .date {
+  font-size: 12px !important;
+  color: #666 !important;
+  margin-top: 4px !important
+}
+
+.swg-foot {
+  font-size: 12px !important;
+  color: #666 !important;
+  text-align: center !important;
+  padding: 12px !important;
+  background: #f3f4f6 !important;
+  border-radius: 0 0 var(--radius) var(--radius) !important;
+  position: sticky !important;
+  bottom: 0 !important;
+  z-index: 1 !important
+}
+
+.swg-toast {
+  position: fixed !important;
+  top: 96px !important;
+  right: 20px !important;
+  background: #10b981 !important;
+  color: #fff !important;
+  padding: 10px 12px !important;
+  border-radius: 10px !important;
+  box-shadow: 0 10px 26px rgba(16, 185, 129, .35) !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  transform: translateX(420px) !important;
+  transition: transform .25s ease !important;
+  z-index: 10002 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.swg-toast.show {
+  transform: translateX(0) !important
+}
+
+@media (max-width:768px) {
+  #swg-drawer {
+      right: 3vw !important;
+      width: 92vw !important
+  }
+  .swg-trio {
+      grid-template-columns: 1fr 1fr !important
+  }
+}
+
+@media (max-width:480px) {
+  .swg-trio {
+      grid-template-columns: 1fr !important
+  }
+}
+
+/* Charts Section Styles */
+.swg-charts-section {
+  margin-top: 16px !important;
+}
+
+.swg-charts-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 16px !important;
+}
+
+.swg-charts-header h3 {
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: #333 !important;
+}
+
+.swg-charts-controls {
+  display: flex !important;
+  gap: 8px !important;
+}
+
+.swg-charts-controls .swg-btn {
+  padding: 0 !important;
+  min-width: auto !important;
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 8px !important;
+}
+
+.swg-charts-controls .swg-btn img {
+  width: 16px !important;
+  height: 16px !important;
+  object-fit: contain !important;
+  filter: brightness(0) saturate(100%) contrast(1.2) !important;
+  vertical-align: middle !important;
+  transition: filter 0.2s ease !important;
+}
+
+/* Ensure inline SVG icons render consistently */
+.swg-charts-controls .swg-btn svg,
+.swg-chart-expand svg {
+  width: 16px !important;
+  height: 16px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  fill: currentColor !important;
+}
+
+#swg-btn svg {
+  width: 22px !important;
+  height: 22px !important;
+  fill: #fff !important;
+}
+
+.swg-charts-controls .swg-btn:hover img {
+  filter: brightness(0) saturate(100%) contrast(1.5) !important;
+}
+
+.swg-charts-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  gap: 16px !important;
+  max-height: 600px !important;
+  overflow-y: auto !important;
+}
+
+.swg-charts-grid.swg-charts-fullscreen {
+  grid-template-columns: 1fr !important;
+  max-height: none !important;
+}
+
+.swg-chart-container {
+  background: #fff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  overflow: hidden !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.swg-chart-container:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+.swg-chart-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 12px 16px !important;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+  border-bottom: 1px solid #dee2e6 !important;
+}
+
+.swg-chart-header h4 {
+  margin: 0 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #495057 !important;
+}
+
+.swg-chart-expand {
+  background: none !important;
+  border: none !important;
+  color: #6c757d !important;
+  cursor: pointer !important;
+  font-size: 16px !important;
+  padding: 4px !important;
+  border-radius: 4px !important;
+  transition: color 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.swg-chart-expand:hover {
+  color: #ff6b35 !important;
+  background: rgba(255, 107, 53, 0.1) !important;
+}
+
+.swg-chart-content {
+  position: relative !important;
+  height: 200px !important;
+  padding: 16px !important;
+}
+
+.swg-chart-content canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.swg-chart-loading {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  color: #6c757d !important;
+  font-size: 14px !important;
+}
+
+.swg-chart-error {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  text-align: center !important;
+  color: #dc3545 !important;
+}
+
+.swg-chart-error span {
+  font-size: 24px !important;
+  display: block !important;
+  margin-bottom: 8px !important;
+}
+
+.swg-chart-error p {
+  margin: 0 !important;
+  font-size: 12px !important;
+}
+
+.swg-no-data {
+  grid-column: 1 / -1 !important;
+  text-align: center !important;
+  padding: 40px 20px !important;
+  color: #6c757d !important;
+}
+
+.swg-no-data-icon {
+  font-size: 48px !important;
+  margin-bottom: 16px !important;
+}
+
+.swg-no-data h4 {
+  margin: 0 0 8px 0 !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.swg-no-data p {
+  margin: 0 !important;
+  font-size: 14px !important;
+}
+
+/* Chart Modal Styles */
+.swg-chart-modal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  z-index: 10003 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+}
+
+.swg-chart-modal-content {
+  background: #fff !important;
+  border-radius: 12px !important;
+  max-width: 90vw !important;
+  max-height: 90vh !important;
+  width: 800px !important;
+  overflow: hidden !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+}
+
+.swg-chart-modal-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 16px 20px !important;
+  background: linear-gradient(135deg, #ff6b35, #f7931e) !important;
+  color: #fff !important;
+}
+
+.swg-chart-modal-header h3 {
+  margin: 0 !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.swg-chart-modal-close {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: none !important;
+  color: #fff !important;
+  font-size: 24px !important;
+  cursor: pointer !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  transition: background 0.2s ease !important;
+}
+
+.swg-chart-modal-close:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.swg-chart-modal-body {
+  padding: 20px !important;
+  height: 500px !important;
+}
+
+.swg-chart-modal-body canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Responsive Design for Charts */
+@media (max-width: 768px) {
+  .swg-charts-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .swg-chart-content {
+    height: 180px !important;
+  }
+  
+  .swg-chart-modal-content {
+    width: 95vw !important;
+    margin: 10px !important;
+  }
+  
+  .swg-chart-modal-body {
+    height: 400px !important;
+  }
+}
+
+/* AI Assistant Panel */
+.swg-ai-panel {
+  position: relative !important;
+  margin: 12px 16px !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  box-shadow: 0 1px 8px rgba(0,0,0,.08) !important;
+  overflow: hidden !important;
+}
+
+.swg-ai-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 10px 12px !important;
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent-2)) !important;
+  color: #fff !important;
+}
+
+.swg-ai-title { font-weight: 700 !important; font-size: 14px !important; }
+.swg-ai-close {
+  border: 0 !important;
+  background: rgba(255,255,255,.25) !important;
+  color: #fff !important;
+  width: 24px !important; height: 24px !important; border-radius: 6px !important; cursor: pointer !important;
+}
+.swg-ai-close:hover { background: rgba(255,255,255,.35) !important; }
+
+.swg-ai-body {
+  max-height: 220px !important; overflow: auto !important; padding: 10px 12px !important;
+}
+.swg-ai-msg { padding: 6px 8px !important; margin: 4px 0 !important; border-radius: 8px !important; font-size: 12px !important; line-height: 1.4 !important; }
+.swg-ai-msg.user { background: #eef2ff !important; color: #1f2937 !important; }
+.swg-ai-msg.assistant { background: #fef3c7 !important; color: #1f2937 !important; }
+
+.swg-ai-input {
+  display: flex !important; gap: 8px !important; padding: 10px 12px !important; border-top: 1px solid #eee !important;
+}
+.swg-ai-input textarea { flex: 1 !important; resize: vertical !important; border: 1px solid #e5e7eb !important; border-radius: 8px !important; padding: 6px 8px !important; font-family: inherit !important; font-size: 12px !important; }

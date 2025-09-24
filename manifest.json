@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Swiggy Order Tracker (Chromium)",
+  "version": "1.9.0",
+  "description": "A definitive, robust extension to track and analyze Swiggy orders via DOM scraping and API interception.",
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.swiggy.com/*", "https://api.groq.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.swiggy.com/*"],
+      "run_at": "document_start",
+      "js": ["storage.js", "chart.js", "chartjs-cdn.js", "chart-generator.js", "charts-ui.js", "ai-context.js", "ai-ui.js", "content.js"],
+      "css": ["style.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["page-bridge.js", "chart.js", "icons/icon16.png", "icons/icon48.png", "icons/icon128.png"],
+      "matches": ["*://*.swiggy.com/*"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
