@@ -26,18 +26,6 @@ A definitive, robust extension to track and analyze Swiggy orders via DOM scrapi
 4. Use the "FULL SYNC" button to manually sync all orders
 5. Export your data using the "EXPORT CSV" button
 
-## Recent Fixes
-
-### Chart.js CSP Issue (Fixed)
-- **Problem**: Charts were failing to load due to Content Security Policy violations when loading Chart.js from external CDNs
-- **Solution**: Bundled Chart.js directly with the extension and created a fallback implementation
-- **Result**: Charts now load reliably without external dependencies
-
-### Error Handling Improvements
-- Added robust error handling for chart generation
-- Implemented fallback chart rendering when Chart.js fails to load
-- Better null reference protection in chart UI components
-
 ## Configuration
 
 ### Groq API (Optional)
@@ -84,5 +72,6 @@ The extension consists of several key files:
 - `chart.js`: Bundled Chart.js library
 
 ## License
+
 
 This project is licensed under the MIT License - see the LICENSE file for details.
